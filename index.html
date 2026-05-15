@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cavendish Hostel Finder - Find Affordable Student Hostels Near Cavendish University">
+  <title>Cavendish Hostel Finder - Student Accommodation Near Cavendish University</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&family=Poppins:wght@500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-spinner"></div>
+      <p>Cavendish Hostel Finder</p>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <a href="index.html" class="chf-logo">
+        <div class="chf-logo-icon">CHF</div>
+        <div class="chf-logo-text">Cavendish<br><span>Hostel Finder</span></div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="listings.html">Hostels</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="booking.html" class="btn btn-primary">Book Now</a></li>
+      </ul>
+
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <i class="fas fa-moon"></i>
+      </button>
+
+      <button class="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1><span id="typingText">Find Affordable Student Hostels Around Cavendish University</span></h1>
+        <p>Helping students discover safe, affordable, and comfortable accommodation near campus in Nsambya, Kabalagala, Kibuli, and Kansanga.</p>
+        <div class="hero-buttons">
+          <a href="listings.html" class="btn btn-primary btn-glow"><i class="fas fa-search"></i> Explore Hostels</a>
+          <a href="booking.html" class="btn btn-outline"><i class="fas fa-calendar-check"></i> Book Room</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <h3>50+</h3>
+            <p>Verified Hostels</p>
+          </div>
+          <div class="hero-stat">
+            <h3>1,000+</h3>
+            <p>Happy Students</p>
+          </div>
+          <div class="hero-stat">
+            <h3>5+</h3>
+            <p>Years Experience</p>
+          </div>
+        </div>
+      </div>
+      <div class="hero-image float-animation">
+        <img src="images/3.jpg" alt="Cavendish University area campus buildings">
+        <div class="hero-image-badge">
+          <div class="badge-icon"><i class="fas fa-check"></i></div>
+          <div class="badge-text">
+            <h4>100% Verified</h4>
+            <p>Trusted by Cavendish students</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Search Bar -->
+  <div class="search-bar">
+    <div class="container">
+      <div class="search-group">
+        <label><i class="fas fa-search"></i> Search Hostel</label>
+        <input type="text" class="hostel-search" id="hostelSearch" placeholder="Search by name or location..." oninput="filterHomeResults(this.value)">
+      </div>
+      <div class="search-group">
+        <label><i class="fas fa-map-marker-alt"></i> Location</label>
+        <select id="locationFilter" onchange="filterHomeResults(document.getElementById('hostelSearch').value)">
+          <option value="">All Locations</option>
+          <option value="Nsambya">Nsambya</option>
+          <option value="Kabalagala">Kabalagala</option>
+          <option value="Kibuli">Kibuli</option>
+          <option value="Kansanga">Kansanga</option>
+        </select>
+      </div>
+      <div class="search-group">
+        <label><i class="fas fa-bed"></i> Room Type</label>
+        <select id="roomTypeFilter" onchange="filterHomeResults(document.getElementById('hostelSearch').value)">
+          <option value="">All Types</option>
+          <option value="Shared">Shared</option>
+          <option value="Private">Private</option>
+          <option value="Dormitory">Dormitory</option>
+        </select>
+      </div>
+      <button class="btn btn-primary" id="searchBtn"><i class="fas fa-arrow-right"></i> Search</button>
+    </div>
+  </div>
+
+  <!-- Featured Hostels -->
+  <section class="section featured" id="featured">
+    <div class="container">
+      <div class="section-title">
+        <h2>Featured Hostels</h2>
+        <p>Handpicked accommodations around Nsambya, Kabalagala, Kibuli &amp; Kansanga near Cavendish University</p>
+      </div>
+      <div class="hostel-grid" id="featuredGrid"></div>
+      <div style="text-align:center;margin-top:2.5rem;">
+        <a href="listings.html" class="btn btn-dark">View All Hostels <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="section why-choose" id="why-us">
+    <div class="container">
+      <div class="section-title">
+        <h2>Why Choose Cavendish Hostel Finder</h2>
+        <p>We make finding student housing around Nsambya, Kabalagala, Kibuli &amp; Kansanga simple, safe, and stress-free</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card fade-in">
+          <div class="feature-icon"><i class="fas fa-tag"></i></div>
+          <h3>Affordable Prices</h3>
+          <p>Find hostels that fit your student budget with transparent pricing in UGX and no hidden fees.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+          <h3>Secure Booking</h3>
+          <p>Your payments and personal information are protected with enterprise-grade security.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+          <h3>Verified Hostels</h3>
+          <p>Every hostel across Nsambya, Kabalagala, Kibuli &amp; Kansanga is manually verified to ensure quality, safety, and accurate listings.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon"><i class="fas fa-headset"></i></div>
+          <h3>Fast Support</h3>
+          <p>Our dedicated support team is available 24/7 to help with any questions or concerns.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+        <h2>Ready to Find Your Perfect Hostel?</h2>
+      <p>Join thousands of Cavendish University students who found their home away from home.</p>
+      <a href="booking.html" class="btn btn-primary btn-glow"><i class="fas fa-calendar-check"></i> Book Your Stay Now</a>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-title">
+        <h2>What Students Say</h2>
+        <p>Real reviews from Cavendish University students who found accommodation through our platform</p>
+      </div>
+      <div class="testimonial-carousel">
+        <button class="carousel-btn carousel-prev" id="testimonialPrev" aria-label="Previous testimonial">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="testimonial-track" id="testimonialTrack"></div>
+        <button class="carousel-btn carousel-next" id="testimonialNext" aria-label="Next testimonial">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+        <div class="carousel-dots" id="testimonialDots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="chf-logo" style="color:var(--white);">
+            <div class="chf-logo-icon">CHF</div>
+            <div class="chf-logo-text" style="color:var(--white);">Cavendish<br><span>Hostel Finder</span></div>
+          </a>
+          <p>Cavendish Hostel Finder is the leading platform for Cavendish University students to find affordable, verified hostel accommodations in Nsambya, Kabalagala, Kibuli and Kansanga, Kampala.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="listings.html">Browse Hostels</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="booking.html">Book Now</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>For Students</h4>
+          <ul class="footer-links">
+            <li><a href="#">How It Works</a></li>
+            <li><a href="#">Safety Tips</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Student Guide</a></li>
+            <li><a href="#">Cancellation Policy</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact Info</h4>
+          <ul class="footer-contact">
+            <li><i class="fas fa-map-marker-alt"></i> Behind Sharing Youth Centre, Nsambya, Kampala</li>
+            <li><i class="fas fa-phone-alt"></i> +256 770 595 171</li>
+            <li><i class="fas fa-envelope"></i> walterolum91@gmail.com</li>
+            <li><i class="fas fa-clock"></i> Mon - Sat: 8:00 AM - 8:00 PM</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Cavendish Hostel Finder. Designed and Developed by Olum Walter | Cavendish University Uganda</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/script.js"></script>
+  <script>
+    function filterHomeResults(searchTerm) {
+      const locationFilter = document.getElementById('locationFilter').value.toLowerCase();
+      const roomTypeFilter = document.getElementById('roomTypeFilter').value.toLowerCase();
+      const cards = document.querySelectorAll('#featuredGrid .hostel-card');
+
+      cards.forEach(function(card) {
+        const name = card.querySelector('h3').textContent.toLowerCase();
+        const location = card.querySelector('.location').textContent.toLowerCase();
+        const roomTypeEl = card.querySelector('.room-type');
+        const roomType = roomTypeEl ? roomTypeEl.textContent.toLowerCase() : '';
+        let visible = true;
+
+        if (searchTerm && !name.includes(searchTerm) && !location.includes(searchTerm)) {
+          visible = false;
+        }
+        if (locationFilter && !location.includes(locationFilter)) {
+          visible = false;
+        }
+        if (roomTypeFilter && !roomType.includes(roomTypeFilter)) {
+          visible = false;
+        }
+
+        card.style.display = visible ? '' : 'none';
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const searchInput = document.getElementById('hostelSearch');
+      const searchBtn = document.getElementById('searchBtn');
+      if (searchInput && searchBtn) {
+        searchBtn.addEventListener('click', function() {
+          filterHomeResults(searchInput.value);
+        });
+      }
+    });
+  </script>
+</body>
+</html>

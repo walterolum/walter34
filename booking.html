@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Book your student hostel near Cavendish University, Nsambya">
+  <title>Book a Hostel - Cavendish Hostel Finder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&family=Poppins:wght@500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-spinner"></div>
+      <p>Cavendish Hostel Finder</p>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <a href="index.html" class="chf-logo">
+        <div class="chf-logo-icon">CHF</div>
+        <div class="chf-logo-text">Cavendish<br><span>Hostel Finder</span></div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="listings.html">Hostels</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="booking.html" class="btn btn-primary active">Book Now</a></li>
+      </ul>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <i class="fas fa-moon"></i>
+      </button>
+      <button class="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="container">
+      <h1>Book Your Hostel</h1>
+      <p>Secure your student accommodation in Nsambya, Kabalagala, Kibuli or Kansanga in just a few clicks</p>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span><i class="fas fa-chevron-right"></i></span>
+        <span>Book Now</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Booking Section -->
+  <section class="booking-section">
+    <div class="container">
+      <div class="booking-layout">
+
+        <!-- Booking Form -->
+        <div class="booking-form">
+          <h2><i class="fas fa-edit"></i> Booking Details</h2>
+          <p>Fill in your details to reserve your room near campus</p>
+
+          <form id="bookingForm" novalidate>
+            <div class="form-group">
+              <label>Full Name <span class="required">*</span></label>
+              <input type="text" id="bookingName" placeholder="Enter your full name">
+              <div class="error-message" id="nameError"></div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Email Address <span class="required">*</span></label>
+                <input type="email" id="bookingEmail" placeholder="your@email.com">
+                <div class="error-message" id="emailError"></div>
+              </div>
+              <div class="form-group">
+                <label>Phone Number <span class="required">*</span></label>
+                <input type="tel" id="bookingPhone" placeholder="+256 700 000 000">
+                <div class="error-message" id="phoneError"></div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Gender</label>
+                <select id="bookingGender">
+                  <option value="">Select gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                  <option value="prefer-not">Prefer not to say</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Room Type <span class="required">*</span></label>
+                <select id="bookingRoomType">
+                  <option value="">Select room type</option>
+                  <option value="Shared">Shared Room</option>
+                  <option value="Private">Private Room</option>
+                  <option value="Dormitory">Dormitory</option>
+                </select>
+                <div class="error-message" id="roomError"></div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Select Hostel <span class="required">*</span></label>
+              <select id="bookingHostel">
+                <option value="">Choose a hostel...</option>
+              </select>
+              <div class="error-message" id="hostelError"></div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Duration of Stay (months) <span class="required">*</span></label>
+                <input type="number" id="bookingDuration" min="1" max="24" value="1" placeholder="e.g. 6">
+                <div class="error-message" id="durationError"></div>
+              </div>
+              <div class="form-group">
+                <label>Check-in Date <span class="required">*</span></label>
+                <input type="date" id="bookingDate">
+                <div class="error-message" id="dateError"></div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:1rem;font-size:1.05rem;">
+              <i class="fas fa-check-circle"></i> Confirm Booking
+            </button>
+          </form>
+        </div>
+
+        <!-- Booking Summary -->
+        <div class="booking-summary" id="bookingSummary">
+          <h3><i class="fas fa-receipt"></i> Booking Summary</h3>
+          <div class="booking-summary-item">
+            <span class="label">Hostel</span>
+            <span class="value" id="summaryHostel">Not selected</span>
+          </div>
+          <div class="booking-summary-item">
+            <span class="label">Room Type</span>
+            <span class="value" id="summaryRoom">Not selected</span>
+          </div>
+          <div class="booking-summary-item">
+            <span class="label">Duration</span>
+            <span class="value" id="summaryDuration">-</span>
+          </div>
+          <div class="booking-summary-item">
+            <span class="label">Price per Month</span>
+            <span class="value" id="summaryPrice">UGX 0</span>
+          </div>
+          <div class="booking-total">
+            <span>Total Amount</span>
+            <span id="bookingTotal">UGX 0</span>
+          </div>
+          <p style="font-size:0.8rem;color:var(--gray-400);margin-top:1rem;text-align:center;">
+            <i class="fas fa-lock"></i> Your information is secure and encrypted
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Success Modal -->
+  <div class="modal-overlay" id="successModal">
+    <div class="modal">
+      <div class="modal-icon"><i class="fas fa-check"></i></div>
+      <h3>Booking Confirmed!</h3>
+      <p>Your hostel reservation has been received successfully. We'll send a confirmation via email or phone shortly.</p>
+      <a href="listings.html" class="btn btn-dark"><i class="fas fa-arrow-left"></i> Browse More Hostels</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="chf-logo" style="color:var(--white);">
+            <div class="chf-logo-icon">CHF</div>
+            <div class="chf-logo-text" style="color:var(--white);">Cavendish<br><span>Hostel Finder</span></div>
+          </a>
+          <p>Cavendish Hostel Finder is the leading platform for Cavendish University students to find affordable, verified hostel accommodations in Nsambya, Kabalagala, Kibuli and Kansanga, Kampala.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="listings.html">Browse Hostels</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="booking.html">Book Now</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>For Students</h4>
+          <ul class="footer-links">
+            <li><a href="#">How It Works</a></li>
+            <li><a href="#">Safety Tips</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Student Guide</a></li>
+            <li><a href="#">Cancellation Policy</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact Info</h4>
+          <ul class="footer-contact">
+            <li><i class="fas fa-map-marker-alt"></i> Behind Sharing Youth Centre, Nsambya, Kampala</li>
+            <li><i class="fas fa-phone-alt"></i> +256 770 595 171</li>
+            <li><i class="fas fa-envelope"></i> walterolum91@gmail.com</li>
+            <li><i class="fas fa-clock"></i> Mon - Sat: 8:00 AM - 8:00 PM</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Cavendish Hostel Finder. Designed and Developed by Olum Walter | Cavendish University Uganda</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
